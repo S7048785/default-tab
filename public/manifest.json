@@ -1,0 +1,9 @@
+{
+  "name": "空白新建标签页",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "description": "这是一个空白的新建标签页",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

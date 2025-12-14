@@ -1,0 +1,7 @@
+button {
+  &:hover {
+    span {
+      transform: rotate(90deg);
+    }
+  }
+}
