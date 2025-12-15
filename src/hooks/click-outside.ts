@@ -5,7 +5,7 @@ import {type RefObject, useEffect} from 'react';
  * @param refs 目标元素
  * @param callback 回调函数
  */
-export function useClickOutside(refs: RefObject<HTMLInputElement | null>[], callback: () => void) {
+export function useClickOutside(refs: RefObject<HTMLElement | null>[], callback: () => void) {
 	useEffect(() => {
 		function handleClickOutside(event: MouseEvent) {
 			let inRefs = false;

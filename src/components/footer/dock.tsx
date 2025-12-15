@@ -1,8 +1,8 @@
 import {useRef, useState} from 'react';
 import { motion } from 'motion/react';
-import { useQuickAccessStore, type QuickAccessItem } from '../stores/quickAccessStore';
+import { useQuickAccessStore, type QuickAccessItem } from '../../stores/quickAccessStore.ts';
 import { HiOutlinePlus, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
-// import {useClickOutside} from '../hooks/click-outside';
+import {useClickOutside} from "@/hooks/click-outside.ts";
 
 const Dock = () => {
   const { items, removeItem} = useQuickAccessStore();
@@ -10,7 +10,7 @@ const Dock = () => {
   const [editingItem, setEditingItem] = useState<QuickAccessItem | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  // useClickOutside([menuRef], () => setShowMenu(null));
+  useClickOutside([menuRef], () => setShowMenu(null));
 
   const getFavicon = (url: string) => {
     try {

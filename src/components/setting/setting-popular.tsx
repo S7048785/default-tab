@@ -8,6 +8,7 @@ import emitter from "../../plugins/emitter.ts";
 import QuickTab from "./tab/quick-tab.tsx";
 import SearchTab from "./tab/search-tab.tsx";
 import WallTab from "./tab/wall-tab.tsx";
+import AppearanceTab from "@/components/setting/tab/AppearanceTab.tsx";
 
 const tabList = [
 	{
@@ -26,7 +27,7 @@ const tabList = [
 		value: "tab2",
 		title: "外观",
 		icon: <FaPalette/>,
-		element: WallTab
+		element: AppearanceTab
 	},
 	{
 		value: "tab3",
@@ -105,7 +106,7 @@ export default function SettingPopular() {
 							ref={modal}
 							className="w-[60%] flex backdrop-blur-md shadow-md">
 							<div className="flex overflow-hidden flex-col w-[25%] rounded-l-lg border-r-solid border border-gray-300 dark:border-gray-700 bg-[#f9fafb] dark:bg-[#18212f]">
-								<p className={"text-black dark:text-gray-100 text-lg font-bold border-b-solid border border-gray-300 dark:border-gray-700 p-4"}>设置</p>
+								<p className={"text-black dark:text-gray-100 text-lg font-bold border-b-solid border-b border-gray-300 dark:border-gray-700 p-4"}>设置</p>
 								<div className={"relative"}>
 									{
 										tabList.map((item, index) => (
