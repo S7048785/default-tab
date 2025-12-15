@@ -31,7 +31,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/default-tab.git
+git clone https://github.com/S7048785/default-tab.git
 cd default-tab
 
 # 安装依赖
