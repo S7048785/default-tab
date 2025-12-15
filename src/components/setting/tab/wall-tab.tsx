@@ -5,7 +5,7 @@ const WallTab = function () {
 			<p>简洁标签页</p>
 			<p className="text-sm text-gray-500 dark:text-gray-400">
 				<p>版本 v1.0.0</p>
-				<p>一个轻量级的浏览器标签页</p>
+				<p>一个轻量简约的浏览器标签页</p>
 			</p>
 			<hr/>
 			<div>

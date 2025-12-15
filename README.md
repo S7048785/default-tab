@@ -1,69 +1,165 @@
-# React + TypeScript + Vite
+# Default Tab - 空白新建标签页
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个简洁、优雅、高度可定制的浏览器新建标签页扩展。
 
-Currently, two official plugins are available:
+![Preview](./preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ 特性
 
-## Expanding the ESLint configuration
+- 🚀 **极速启动** - 纯静态加载，无网络请求，瞬间打开
+- 🎨 **精美界面** - 毛玻璃效果设计，支持深色/浅色主题切换
+- 🔍 **多搜索引擎** - 内置多个搜索引擎，一键切换
+- ⚡ **快捷访问** - 自定义常用网站快捷方式，支持拖拽排序
+- 💾 **数据持久化** - 所有设置本地存储，保护隐私
+- 🌙 **主题切换** - 支持深色模式和浅色模式
+- 📱 **响应式设计** - 完美适配各种屏幕尺寸
+- 🔧 **高度可定制** - 可自定义背景、搜索引擎、快捷方式等
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ 技术栈
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **框架**: React 19 + TypeScript 5.8
+- **构建工具**: Vite 7.0
+- **样式**: Tailwind CSS 4.1 + styled-components
+- **状态管理**: Zustand 5.0
+- **动画**: Motion (Framer Motion 替代品)
+- **UI 组件**: Shadcn UI
+- **图标**: Lucide React + React Icons
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 安装
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 从源码构建
+
+```bash
+# 克隆仓库
+git clone https://github.com/your-username/default-tab.git
+cd default-tab
+
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+
+# 构建生产版本
+pnpm build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 安装到浏览器
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. 构建项目：`pnpm build`
+2. 打开 Chrome/Edge 浏览器，进入 `chrome://extensions/`
+3. 开启"开发者模式"
+4. 点击"加载已解压的扩展程序"
+5. 选择 `dist` 文件夹
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 使用说明
+
+### 搜索功能
+
+- 直接在搜索框输入关键词即可搜索
+- 点击搜索图标可切换搜索引擎
+- 支持的搜索引擎：百度、必应、谷歌、DuckDuckGo、Yandex、夸克
+
+### 快捷访问管理
+
+- **添加快捷方式**：点击底部的 + 按钮
+- **编辑快捷方式**：右键点击快捷方式图标，选择编辑
+- **删除快捷方式**：右键点击快捷方式图标，选择删除
+- **打开网站**：点击快捷方式图标即可在新标签页打开
+
+### 个性化设置
+
+点击设置按钮可以自定义：
+- 快捷访问网站管理
+- 搜索引擎选择
+- 主题外观设置
+- 背景自定义
+
+## 📁 项目结构
+
 ```
+default-tab/
+├── public/                  # 静态资源
+│   ├── manifest.json      # 浏览器扩展配置
+│   └── icons.png           # 默认图标
+├── src/
+│   ├── components/         # React 组件
+│   │   ├── dock/          # 底部快捷访问栏
+│   │   ├── footer/        # 页脚组件
+│   │   ├── setting/       # 设置面板
+│   │   ├── theme/         # 主题相关
+│   │   └── ui/            # UI 基础组件
+│   ├── hooks/             # 自定义 Hooks
+│   ├── lib/               # 工具函数
+│   ├── plugins/           # 插件（事件发射器）
+│   ├── stores/            # Zustand 状态管理
+│   ├── styles/            # 全局样式
+│   └── App.tsx            # 主应用组件
+├── index.html             # HTML 入口
+├── package.json           # 项目配置
+├── tsconfig.json          # TypeScript 配置
+└── vite.config.ts         # Vite 配置
+```
+
+## ⚙️ 配置选项
+
+### Manifest V3 配置
+
+```json
+{
+  "name": "空白新建标签页",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "description": "这是一个空白的新建标签页",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
+```
+
+### 自定义搜索引擎
+
+在 `src/lib/searchEngines.ts` 中可以添加或修改搜索引擎：
+
+```typescript
+export const searchEngines = [
+  {
+    name: "百度",
+    url: "https://www.baidu.com/s?wd=",
+    icon: "https://www.baidu.com/favicon.ico",
+  },
+  // 添加更多...
+];
+```
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交你的改动 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启一个 Pull Request
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+## 🙏 致谢
+
+- [React](https://reactjs.org/) - UI 框架
+- [Vite](https://vitejs.dev/) - 构建工具
+- [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
+- [Motion](https://motion.dev/) - 动画库
+- [Zustand](https://zustand-demo.pmnd.rs/) - 状态管理
+
+## 📞 联系
+
+项目主页：[https://github.com/your-username/default-tab](https://github.com/your-username/default-tab)
+
+如有问题或建议，欢迎提交 Issue 或联系 [your-email@example.com](mailto:your-email@example.com)
+
+---
+
+⭐ 如果这个项目对你有帮助，请给它一个星标！
