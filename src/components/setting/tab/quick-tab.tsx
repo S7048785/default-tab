@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { useQuickAccessStore } from "../../../stores/quickAccessStore";
+import { useQuickAccessStore } from "@/stores/quickAccessStore.ts";
 import { HiOutlineTrash, HiOutlinePencilAlt } from "react-icons/hi";
 
 const QuickTab = () => {

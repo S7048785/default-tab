@@ -1,6 +1,6 @@
 import {useRef, useState} from 'react';
 import { motion } from 'motion/react';
-import { useQuickAccessStore, type QuickAccessItem } from '../../stores/quickAccessStore.ts';
+import { useQuickAccessStore, type QuickAccessItem } from "@/stores/quickAccessStore.ts";
 import { HiOutlinePlus, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
 import {useClickOutside} from "@/hooks/click-outside.ts";
 

@@ -1,10 +1,10 @@
 import { motion } from "motion/react"
 import { useEffect, useRef, useState } from "react";
-import { useClickOutside } from "../../hooks/click-outside.ts";
+import { useClickOutside } from "@/hooks/click-outside.ts";
 import "./SearchInput.css"
 import * as React from "react";
-import { useHistoryStore } from "../../stores/historyStore.ts";
-import { searchMap } from "../../lib/selectEngine.ts";
+import { useHistoryStore } from "@/stores/historyStore.ts";
+import { searchMap } from "@/lib/selectEngine.ts";
 
 export default function SearchInput() {
 
