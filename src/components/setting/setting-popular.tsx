@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useRef, useState} from "react";
-import {cn} from "../../lib/class-mergn.ts";
+import {cn} from "@/lib/class-mergn.ts";
 import {motion, AnimatePresence} from "motion/react"
-import {useClickOutside} from "../../hooks/click-outside.ts";
+import {useClickOutside} from "@/hooks/click-outside.ts";
 import "./setting.module.css"
 import {FaBorderAll, FaInfoCircle, FaPalette, FaSearch} from 'react-icons/fa';
 import emitter from "../../plugins/emitter.ts";
@@ -37,29 +37,55 @@ const tabList = [
 ]
 
 export default function SettingPopular() {
-
+	/**
+	 * 设置当前选中的标签页索引状态
+	 * @param selectTabIndex - 当前选中的标签页索引
+	 * @param setSelectTabIndex - 设置选中标签页索引的函数
+	 */
 	const [selectTabIndex, setSelectTabIndex] = useState(0)
+
+	/**
+	 * 设置模态框是否打开的状态
+	 * @param isOpen - 模态框打开状态标识
+	 * @param setIsOpen - 设置模态框打开状态的函数
+	 */
 	const [isOpen, setIsOpen] = useState(false)
+
+	/**
+	 * 模态框DOM元素的引用
+	 */
 	const modal = useRef(null)
 
 
+	/**
+	 * 根据当前选中的标签页索引获取对应的组件
+	 * @returns 返回当前选中标签页对应的React组件
+	 */
 	const TabComponent = useMemo(() => {
-		console.log(123)
-
 		return tabList[selectTabIndex].element;
 	}, [selectTabIndex]);
 
+	/**
+	 * 组件挂载时注册事件监听器
+	 */
 	useEffect(() => {
 		emitter.on("open-setting-popular", onOpenPopular)
 	}, []);
 
+	/**
+	 * 打开热门设置模态框的回调函数
+	 */
 	const onOpenPopular = () => {
 		setIsOpen(true)
 	}
 
+	/**
+	 * 监听模态框外部点击事件，点击外部区域时关闭模态框
+	 */
 	useClickOutside([modal], () => {
 		setIsOpen(false)
 	})
+
 
 
 	return (
@@ -77,8 +103,8 @@ export default function SettingPopular() {
 							animate={{opacity: 1, scale: 1, transition: {duration: 0.3, ease: "backOut"}}}
 							exit={{opacity: 0}}
 							ref={modal}
-							className=" w-60% flex backdrop-blur-md shadow-md">
-							<div className="flex overflow-hidden flex-col w-25% rounded-l-lg border-r-solid border border-gray-300 dark:border-gray-700 bg-[#f9fafb] dark:bg-[#18212f]">
+							className="w-[60%] flex backdrop-blur-md shadow-md">
+							<div className="flex overflow-hidden flex-col w-[25%] rounded-l-lg border-r-solid border border-gray-300 dark:border-gray-700 bg-[#f9fafb] dark:bg-[#18212f]">
 								<p className={"text-black dark:text-gray-100 text-lg font-bold border-b-solid border border-gray-300 dark:border-gray-700 p-4"}>设置</p>
 								<div className={"relative"}>
 									{
@@ -93,7 +119,7 @@ export default function SettingPopular() {
 												}}
 												key={index}
 											>
-												<div className={cn("duration-300 h-37px p-2 flex items-center gap-2 text-gray-500 dark:text-gray dark:hover:text-gray-100 hover:translate-x-2 ", {"translate-x-2 text-gray-800 dark:text-gray-100": selectTabIndex === index})}>
+												<div className={cn("duration-300 h-9.25 p-2 flex items-center gap-2 text-gray-500 dark:text-gray dark:hover:text-gray-100 hover:translate-x-2 ", {"translate-x-2 text-gray-800 dark:text-gray-100": selectTabIndex === index})}>
 													{item.icon}
 													{item.title}
 												</div>
@@ -104,12 +130,14 @@ export default function SettingPopular() {
 										style={{
 											transform: `translateY(${selectTabIndex * 45}px)`
 										}}
-										className={"absolute top-8px left-0 w-0.5 transition h-37px bg-cyan-600"}></div>
+										className={"absolute top-[8px] left-0 w-0.5 transition h-[37px] bg-cyan-600"}></div>
 								</div>
 							</div>
-							<div className="h-120 p-5 flex-1 overflow-y rounded-r-lg bg-white dark:bg-[#111827]">
+							<div className="min-h-120 p-5 flex-1 overflow-y rounded-r-lg bg-white dark:bg-[#111827]">
 								<p className={"text-xl mb-5 dark:text-white font-bold"}>{tabList[selectTabIndex].title}</p>
-								<TabComponent />
+								<div className="flex-1">
+									<TabComponent />
+								</div>
 							</div>
 						</motion.div>
 					</motion.div>

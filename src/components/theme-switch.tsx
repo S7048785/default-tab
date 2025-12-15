@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+import {useTheme} from "@/components/theme/ThemeProvider.tsx";
 
-const ThemeSwitch = ({value, onSwitch}: {value: boolean, onSwitch: () => void}) => {
+const ThemeSwitch = () => {
+
+
+	const { theme, setTheme } = useTheme()
+	console.log(theme)
 	return (
 		<StyledWrapper>
 			<label className="switch">
-				<input id="input" type="checkbox" checked={value} onChange={onSwitch} />
+				<input id="input" type="checkbox" checked={theme === 'dark'} onChange={() => {setTheme(theme === 'dark' ? 'light' : 'dark')}} />
 				<div className="slider round">
 					<div className="sun-moon">
 						<svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
@@ -315,7 +320,7 @@ const StyledWrapper = styled.div`
 
   #star-4 {
     width: 18px;
-    top: 0px;
+    top: 0;
     left: 18px;
     animation-delay: 1.3s;
   }

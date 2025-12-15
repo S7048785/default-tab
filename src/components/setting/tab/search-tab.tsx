@@ -1,5 +1,5 @@
 import {motion} from "motion/react"
-import SearchRadio from "../../search-radio.tsx";
+import SearchRadio from "../../search/SearchRadio.tsx";
 const SearchTab = () => {
 	return (
 		<div className="h-full">

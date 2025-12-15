@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import {useState} from "react";
-import useThemeStore from "../stores/themeStore.ts";
-import {searchArray} from "../lib/selectEngine.ts";
+import {searchArray} from "@/lib/selectEngine.ts";
+import {useTheme} from "@/components/theme/ThemeProvider.tsx";
 
 
 const SearchRadio = () => {
 	const selectEngine = localStorage.getItem('search-engine') || searchArray[0].name
 	const [select, setSelect] = useState(selectEngine)
-	const isDark = useThemeStore().isDark;
+	const { theme} = useTheme()
 
 	// 动态选择样式组件
-	const Wrapper = isDark ? StyledWrapper : StyledWrapperLight;
+	const Wrapper = theme === 'dark' ? StyledWrapper : StyledWrapperLight;
 
 	// 提取公共渲染逻辑
 	const renderRadioInputs = () => (

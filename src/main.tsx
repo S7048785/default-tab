@@ -1,27 +1,17 @@
 import {StrictMode} from 'react'
 import { createRoot } from 'react-dom/client'
+import "./styles/global.css"
 
-import 'virtual:uno.css'
-import "./styles/global.less"
-import Home from "./home/index.ts.tsx";
-
-(function () {
-  const theme = localStorage.getItem('theme') || ''
-  try {
-    const isDark = JSON.parse(theme).state.isDark
-    isDark ? document.documentElement.classList.toggle('dark') : void 0;
-
-  } catch (error) {
-    console.error('缺少Theme配置')
-  }
-})()
-
+import {ThemeProvider} from "@/components/theme/ThemeProvider.tsx";
+import App from "@/App.tsx";
 
 function Index() {
 
   return (
     <StrictMode>
-      <Home />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <App />
+      </ThemeProvider>
     </StrictMode>
   )
 }

@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import SearchInput from "@/components/search/SearchInput.tsx";
+import Header from "@/components/header/Header.tsx";
+import SettingPopular from "@/components/setting/setting-popular.tsx";
+import Clock from "@/components/clock.tsx";
+import Footer from "@/components/footer/Footer.tsx";
+import Dock from "@/components/dock.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-screen overflow-hidden">
+      {/* 背景装饰 */}
+      <div className="absolute top-1/8 left-1/7 rounded-full blur-[100px] bg-blue-500/10 opacity-80 size-140"></div>
+      <div className="absolute top-1/6 right-1/4 rounded-full blur-[100px] bg-purple-500/10 opacity-80 size-140"></div>
+
+      <div className="text-light-text dark:text-dark-text bg-gradient-to-br from-light-from to-light-to dark:from-dark-from dark:to-dark-to flex flex-col h-full p-5">
+        <Header/>
+        <main className="flex flex-col flex-1 gap-8 items-center relative top-10">
+          <div className="">
+            <Clock/>
+          </div>
+          {/*	搜索框*/}
+          <div className="z-10 ">
+            <SearchInput/>
+          </div>
+
+        </main>
+        <footer >
+          <div className="mx-auto w-fit">
+            {/* Dock 快捷方式 */}
+            <Dock/>
+          </div>
+
+          <Footer/>
+
+        </footer>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      {/* 设置弹窗 */}
+      <SettingPopular/>
+
+    </div>
+
   )
 }
-
-export default App
